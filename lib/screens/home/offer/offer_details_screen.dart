@@ -41,7 +41,7 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                       fontSize: 14
                   ),
                 ),
-                subtitle: Text('*Term & Condition applies',
+                subtitle: Text('*Term & Condition applies ',
                   style: TextStyle(
                       fontSize: 8
                   ),
