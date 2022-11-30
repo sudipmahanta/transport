@@ -30,7 +30,7 @@ class _SearchingScreenState extends State<SearchingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PrimaryColor,
+      backgroundColor: primaryColor,
       body: Stack(
         children: [
           Center(

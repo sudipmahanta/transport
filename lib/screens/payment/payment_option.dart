@@ -68,7 +68,7 @@ class _PaymentOptionScreenState extends State<PaymentOptionScreen> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
 
-                            child: PrimaryButton.nameofPrimaryButton(context, 'Continue', (){
+                            child: PrimaButton.nameofPrimaryButton(context, 'Continue', (){
                               Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen()));
                             }),
                           )

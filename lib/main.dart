@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headline1: TextStyle(
             color: TextColor,
           ),
@@ -30,7 +30,27 @@ class MyApp extends StatelessWidget {
           )
         ),
         fontFamily: 'Poppins',
-        scaffoldBackgroundColor:  BackGroundColor
+        scaffoldBackgroundColor:  BackGroundColor,
+        appBarTheme: const AppBarTheme(
+            elevation: 0,
+            titleSpacing: 0,
+            color: primaryColor,
+            titleTextStyle: TextStyle(
+              fontSize: 18
+            )
+          ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: primaryColor,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+                side: BorderSide.none
+            ),
+          )
+        )
       ),
       home: LandingScreen(),
     );

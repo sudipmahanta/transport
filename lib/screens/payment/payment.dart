@@ -113,7 +113,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 25),
-        child: PrimaryButton.nameofPrimaryButton(context, 'Continue', (){
+        child: PrimaButton.nameofPrimaryButton(context, 'Continue', (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentConfirmScreen()));
         }
         ),

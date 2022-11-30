@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:transport/constants/utils/utils.dart';
 import '../../constants/utils/colors_package.dart';
-import '../profile_screen/profile_setup_screen.dart';
+import '../profile_setup/profile_setup_screen.dart';
 
 class SuccessScreen extends StatefulWidget {
   const SuccessScreen({Key? key}) : super(key: key);

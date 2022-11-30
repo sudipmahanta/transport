@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:transport/constants/utils/utils.dart';
 import 'package:transport/screens/verification/login.dart';
 
+import '../constants/utils/buttons.dart';
 import '../constants/utils/colors_package.dart';
 
 class LandingScreen extends StatelessWidget {
@@ -9,7 +10,8 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: BackGroundColor,
       body: SafeArea(
@@ -44,9 +46,13 @@ class LandingScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 40.0),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: PrimaryButton.nameofPrimaryButton(context, 'GET STARTED', (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
-                }),
+                child: PrimaryButton(
+                  width: width * 0.65,
+                  label: 'GET STARTED',
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const  LoginScreen()));
+                  },
+                ),
               ),
             )
           ],

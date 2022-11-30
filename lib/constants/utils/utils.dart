@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 import 'package:transport/screens/my_account/my_account_screen.dart';
 
-import '../../screens/home_screen/home_screen.dart';
+import '../../screens/home/home_screen.dart';
 import '../../screens/notification/notification_screen.dart';
 import 'colors_package.dart';
 
@@ -10,7 +11,7 @@ import 'colors_package.dart';
 class InputTextLabel {
   static Text nameofText(String label) => Text(
     label,
-    style: TextStyle(
+    style: const TextStyle(
       color: Color(0XFF333333),
       fontSize: 13,
       fontWeight: FontWeight.w500
@@ -21,7 +22,7 @@ class InputTextLabel {
 class TextLabel {
   static Text nameofTextLabel(labelText) => Text(
     labelText,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: 12,
       color: Colors.grey,
       fontWeight: FontWeight.w500,
@@ -55,10 +56,10 @@ class OptionalInputTextLabel {
 
 
 // Button's
- class PrimaryButton {
+ class PrimaButton {
   static SizedBox nameofPrimaryButton(context, label, VoidCallback onPressed) =>  SizedBox(
     width: MediaQuery.of(context).size.width * 0.65,
-    height: 45,
+    height: MediaQuery.of(context).size.height * 0.070,
     child: ElevatedButton(
         onPressed: onPressed,
         child: Text(label,
@@ -69,8 +70,7 @@ class OptionalInputTextLabel {
          ),
         ),
         style: ElevatedButton.styleFrom(
-         elevation: 0,
-         primary: PrimaryColor,
+         elevation: 0, backgroundColor: primaryColor,
          shape: const RoundedRectangleBorder(
              borderRadius: BorderRadius.all(
               Radius.circular(10),
@@ -96,8 +96,7 @@ class PrimaryVariantButton {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          elevation: 0,
-          primary: PrimaryVariantColor,
+          elevation: 0, backgroundColor: PrimaryVariantColor,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
@@ -122,8 +121,7 @@ class SecoundaryButton {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          elevation: 0.4,
-          primary: TertiaryButtonColor,
+          elevation: 0.4, backgroundColor: TertiaryButtonColor,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
@@ -138,7 +136,7 @@ class SecoundaryButton {
  class BackBottomButton {
    static Container nameofBackBottomButton(context) => Container(
      width: 83,
-     height: 55,
+     height: MediaQuery.of(context).size.height * 0.070,
      decoration: BoxDecoration(
          borderRadius: BorderRadius.circular(10),
          color: SecoundaryButtonColor
@@ -148,32 +146,34 @@ class SecoundaryButton {
      },
        icon: const Icon(Icons.arrow_back_ios_rounded,
          color: Colors.white,
-         size: 18,
+         size: 16,
        ),
      ),
    );
  }
 
- class PrimaryBottomButton {
-   static ElevatedButton nameofPrimaryButton(context, label, VoidCallback onPressed) =>  ElevatedButton(
-       onPressed: onPressed,
-       child: Text(label,
-         style: TextStyle(
-             fontSize: 14,
-             fontWeight: FontWeight.w400,
-             letterSpacing: 1.5
+ class PrimaBottomButton {
+   static SizedBox nameofPrimaryButton(context, label, VoidCallback onPressed) =>  SizedBox(
+     height: MediaQuery.of(context).size.height * 0.065,
+     child: ElevatedButton(
+         onPressed: onPressed,
+         child: Text(label,
+           style: TextStyle(
+               fontSize: 14,
+               fontWeight: FontWeight.w400,
+               letterSpacing: 1.5
+           ),
          ),
-       ),
-       style: ElevatedButton.styleFrom(
-         elevation: 0.4,
-         primary: PrimaryColor,
-         shape: const RoundedRectangleBorder(
-             borderRadius: BorderRadius.all(
-               Radius.zero,
-             ),
-             side: BorderSide.none
-         ),
-       )
+         style: ElevatedButton.styleFrom(
+           elevation: 0.4, backgroundColor: primaryColor,
+           shape: const RoundedRectangleBorder(
+               borderRadius: BorderRadius.all(
+                 Radius.zero,
+               ),
+               side: BorderSide.none
+           ),
+         )
+     ),
    );
  }
 
@@ -188,8 +188,7 @@ class SecoundaryButton {
          ),
        ),
        style: ElevatedButton.styleFrom(
-         elevation: 0.4,
-         primary: Color(0XFFD3D3D3),
+         elevation: 0.4, backgroundColor: Color(0XFFD3D3D3),
          shape: const RoundedRectangleBorder(
              borderRadius: BorderRadius.all(
                Radius.zero,
@@ -201,10 +200,8 @@ class SecoundaryButton {
  }
 
  class LocationTextButton {
-   static TextButton nameofTextButton(context, ScreenName, label) => TextButton(
-       onPressed: () {
-         Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenName));
-       },
+   static TextButton nameofTextButton(context, label, onPressed) => TextButton(
+       onPressed: onPressed,
        child: Text(label,
          style: TextStyle(
            color: Colors.grey,
@@ -266,84 +263,12 @@ class SecoundaryButton {
    );
  }
 
- //TextInputField
-class OtpInputField {
-  static SizedBox nameofOtpInputField(context, controller, focusNode, nextfocusNode) => SizedBox(
-    width: 50,
-    child:  TextFormField(
-      focusNode: focusNode,
-      controller: controller,
-      autofocus: true,
-      textAlign: TextAlign.center,
-      cursorColor: PrimaryColor,
-      // textInputAction: TextInputAction.next,
-      keyboardType: TextInputType.number,
-      maxLength: 1,
-      onChanged: (v) {
-        if (v.length == 1) {
-          FocusScope.of(context).requestFocus(nextfocusNode);
-        }
-      },
-      decoration: InputDecoration(
-          counterText: "",
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color(0xFFDD3333)
-              )
-          )
-      ),
-      style: TextStyle(
-        fontSize: 23,
-        color: PrimaryColor,
-      ),
-    ),
-  );
-}
 
- class ProfileSetupInputField {
-    static TextFormField nameofTextField(keyboardType, controller, hintText , errorLabel) =>  TextFormField(
-      controller: controller,
-      cursorColor: PrimaryColor,
-      keyboardType: keyboardType,
-      validator: (value){
-        if(value == null || value.isEmpty){
-          return '${errorLabel}';
-        }else{
-          return null;
-        }
-      },
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w500,
-            fontSize: 12.0
-        ),
-        contentPadding: const EdgeInsets.all(20.0),
-        enabledBorder:  const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0XFF999999)),
-          borderRadius: BorderRadius.all( Radius.circular(7.0)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Color(0XFF999999)),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.0),
-          borderSide: const BorderSide(color: Colors.red),
-        ),
-      ),
-    );
- }
 
 class DyInputField {
   static TextFormField nameofDyInputField(keyboardType, maxLine, controller, hintText , errorLabel) =>  TextFormField(
     controller: controller,
-    cursorColor: PrimaryColor,
+    cursorColor: primaryColor,
     keyboardType: keyboardType,
     maxLines: maxLine,
     validator: (value){
@@ -360,7 +285,7 @@ class DyInputField {
           fontWeight: FontWeight.w500,
           fontSize: 12.0
       ),
-      contentPadding: const EdgeInsets.all(20.0),
+      contentPadding: const EdgeInsets.all(10.0),
       enabledBorder:  const OutlineInputBorder(
         borderSide: BorderSide(color: Color(0XFF999999)),
         borderRadius: BorderRadius.all( Radius.circular(7.0)),
@@ -381,83 +306,52 @@ class DyInputField {
   );
 }
 
- class DateTextField {
-   static TextFormField nameofTextField(TextEditingController controller, String hintText) =>  TextFormField(
-     controller: controller,
-     cursorColor: PrimaryColor,
-     keyboardType: TextInputType.datetime,
-     maxLines: 1,
-     decoration: InputDecoration(
-       hintText: hintText,
-       hintStyle: const TextStyle(
-           color: Colors.grey,
-           fontWeight: FontWeight.w500,
-           fontSize: 12.0
-       ),
-       contentPadding: const EdgeInsets.all(20.0),
-       enabledBorder:  const OutlineInputBorder(
-         borderSide: BorderSide(color: Color(0XFF999999)),
-         borderRadius: BorderRadius.all( Radius.circular(7.0)),
-       ),
-       focusedBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(7.0),
-         borderSide: const BorderSide(color:Color(0XFF999999)),
-       ),
-       errorBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(7.0),
-         borderSide: const BorderSide(color: Colors.red),
-       ),
-       focusedErrorBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(7.0),
-         borderSide: const BorderSide(color: Colors.red),
-       ),
-     ),
-   );
- }
-
  class VehicleInfoInputField {
-   static TextFormField nameofTextField(keyBoardType, controller, hintText ,errorLabel) => TextFormField(
-     cursorColor: PrimaryColor,
-     controller: controller,
-     keyboardType: keyBoardType,
-     maxLines: 1,
-     validator: (value){
-       if(value == null || value.isEmpty){
-         return '${errorLabel}';
-       }else{
-         return null;
-       }
-     },
-     decoration: InputDecoration(
-       hintText: hintText,
-       hintStyle: const TextStyle(
-           color: Colors.grey,
-           fontWeight: FontWeight.w500,
-           fontSize: 14.0
-       ),
-       contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-       enabledBorder:  const OutlineInputBorder(
-         borderSide: BorderSide(color: Colors.grey),
-         borderRadius: BorderRadius.all( Radius.circular(5.0)),
-       ),
-       focusedBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(5),
-         borderSide: const BorderSide(color: Colors.grey),
-       ),
-       errorBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(5),
-         borderSide: const BorderSide(color: Colors.red),
-       ),
-       focusedErrorBorder: OutlineInputBorder(
-         borderRadius: BorderRadius.circular(5),
-         borderSide: const BorderSide(color: Colors.red),
+   static Padding nameofTextField(keyBoardType, controller, hintText ,errorLabel) => Padding(
+     padding: const EdgeInsets.all(5.0),
+     child: TextFormField(
+       cursorColor: primaryColor,
+       controller: controller,
+       keyboardType: keyBoardType,
+       maxLines: 1,
+       validator: (value){
+         if(value == null || value.isEmpty){
+           return '${errorLabel}';
+         }else{
+           return null;
+         }
+       },
+       decoration: InputDecoration(
+         hintText: hintText,
+         hintStyle: const TextStyle(
+             color: Colors.grey,
+             fontWeight: FontWeight.w500,
+             fontSize: 14.0
+         ),
+         contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+         enabledBorder:  const OutlineInputBorder(
+           borderSide: BorderSide(color: Colors.grey),
+           borderRadius: BorderRadius.all( Radius.circular(5.0)),
+         ),
+         focusedBorder: OutlineInputBorder(
+           borderRadius: BorderRadius.circular(5),
+           borderSide: const BorderSide(color: Colors.grey),
+         ),
+         errorBorder: OutlineInputBorder(
+           borderRadius: BorderRadius.circular(5),
+           borderSide: const BorderSide(color: Colors.red),
+         ),
+         focusedErrorBorder: OutlineInputBorder(
+           borderRadius: BorderRadius.circular(5),
+           borderSide: const BorderSide(color: Colors.red),
+         ),
        ),
      ),
    );
  }
 
  class LocationInputField {
-   static TextFormField nameofLocationInputField(keyBoardType, controller, prefixImage, hintText, errorLabel) => TextFormField(
+   static TextFormField nameofLocationInputField(keyBoardType, controller, prefixIcon, hintText, errorLabel) => TextFormField(
      controller: controller,
      keyboardType: keyBoardType,
      maxLines: 1,
@@ -470,15 +364,8 @@ class DyInputField {
      },
      decoration: InputDecoration(
        hintText: hintText,
-       prefixIcon: Padding(
-         padding: const EdgeInsets.all(16.0),
-         child: SizedBox(
-           width: 5,
-           height: 5,
-           child: Image(
-             image: AssetImage(prefixImage),
-           ),
-         ),
+       prefixIcon: Icon(prefixIcon,
+         size: 15,
        ),
 
        hintStyle: const TextStyle(
@@ -619,7 +506,6 @@ class ChoosePaymentButton {
  // BottomNavigationBar
 
 // Used in: Notification Screen and MyAccount Screen
-
 Widget PrimaryBottomNavBar(BuildContext context) {
   return Container(
     height: 55,
@@ -638,9 +524,9 @@ Widget PrimaryBottomNavBar(BuildContext context) {
       children: [
         GestureDetector(
           onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
           },
-          child: Image(image: AssetImage('assets/images/home.png'),
+          child: const Image(image: AssetImage('assets/images/home.png'),
             height: 18,
             width: 18,
             color: Colors.grey,
@@ -648,15 +534,15 @@ Widget PrimaryBottomNavBar(BuildContext context) {
         ),
         GestureDetector(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const NotificationScreen()));
           },
           child: Stack(
             children: [
-              Image(
+             const Image(
                 image: AssetImage('assets/images/notification_fill.png'),
                 height: 18,
                 width: 18,
-                color: PrimaryColor,
+                color: primaryColor,
               ),
               Positioned(
                 top: 0,
@@ -669,7 +555,7 @@ Widget PrimaryBottomNavBar(BuildContext context) {
                     backgroundColor: SecoundaryVariantColor,
                     elevation: 3.0,
                     onPressed: () {},
-                    child: Text('02',
+                    child: const Text('02',
                       style: TextStyle(
                         fontSize: 4.5
                       ),
@@ -685,44 +571,109 @@ Widget PrimaryBottomNavBar(BuildContext context) {
   );
 }
 
-Widget HomeNavBar(BuildContext context) {
-  return Container(
-    height: 55,
-    decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.shade200,
-              blurStyle: BlurStyle.outer,
-              blurRadius: 10
-          )
-        ]
+class AddressBookInputField {
+  static searchInputField(controller, hintText) => TextFormField(
+    controller: controller,
+    cursorColor: Colors.black87,
+    keyboardType: TextInputType.text,
+    decoration: InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(
+          color: Colors.grey,
+          fontWeight: FontWeight.w500,
+          fontSize: 12.0
+      ),
+      prefixIcon: Icon(Remix.search_line,
+        size: 18,
+        color: Colors.black,
+      ),
+      filled: true,
+      fillColor: Color(0xFFF3F3F3),
+      contentPadding: const EdgeInsets.all(10.0),
+      enabledBorder:  const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: BorderRadius.all( Radius.circular(7.0)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: BorderSide(color: Colors.transparent),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        GestureDetector(
-          onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          },
-          child: Image(image: AssetImage('assets/images/home.png'),
-            height: 18,
-            width: 18,
-            color: Colors.grey,
-          ),
-        ),
-        GestureDetector(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> MyAccountScreen()));
-          },
-          child: Image(
-            image: AssetImage('assets/images/account.png'),
-            height: 18,
-            width: 18,
-            color: PrimaryColor,
-          ),
-        )
-      ],
+  );
+
+  static textInputField(controller, hintText, validator) => TextFormField(
+    controller: controller,
+    cursorColor: Colors.black87,
+    keyboardType: TextInputType.text,
+    validator: validator,
+    decoration: InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(
+          color: Colors.grey,
+          fontWeight: FontWeight.w500,
+          fontSize: 12.0
+      ),
+      filled: true,
+      fillColor: Color(0xFFF3F3F3),
+      contentPadding: const EdgeInsets.all(10.0),
+      enabledBorder:  const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: BorderRadius.all( Radius.circular(7.0)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: BorderSide(color: Colors.transparent),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+    ),
+  );
+
+  static numberInputField(controller, hintText, validator) => TextFormField(
+    controller: controller,
+    cursorColor: Colors.black87,
+    keyboardType: TextInputType.number,
+    validator: validator,
+    decoration: InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(
+          color: Colors.grey,
+          fontWeight: FontWeight.w500,
+          fontSize: 12.0
+      ),
+      filled: true,
+      fillColor: Color(0xFFF3F3F3),
+      contentPadding: const EdgeInsets.all(10.0),
+      enabledBorder:  const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: BorderRadius.all( Radius.circular(7.0)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: BorderSide(color: Colors.transparent),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(7.0),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
     ),
   );
 }

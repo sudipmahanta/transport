@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:transport/constants/utils/utils.dart';
 
 import '../../constants/utils/colors_package.dart';
-import '../home_screen/home_screen.dart';
+import '../home/home_screen.dart';
 import '../notification/notification_screen.dart';
 
 class AnotherPaymentScreen extends StatefulWidget {
@@ -102,10 +102,10 @@ class _AnotherPaymentScreenState extends State<AnotherPaymentScreen> {
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
               },
-              child: Image(image: AssetImage('assets/images/home.png'),
+              child: const Image(image: AssetImage('assets/images/home.png'),
                 height: 20,
                 width: 20,
-                color: PrimaryColor,
+                color: primaryColor,
               ),
             ),
             GestureDetector(
@@ -114,7 +114,7 @@ class _AnotherPaymentScreenState extends State<AnotherPaymentScreen> {
               },
               child: Stack(
                   children: [
-                    Image(
+                    const Image(
                       image: AssetImage('assets/images/notification_fill.png'),
                       height: 20,
                       width: 20,

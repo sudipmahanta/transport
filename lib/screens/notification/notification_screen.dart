@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/utils/utils.dart';
-import '../home_screen/home_screen.dart';
+import '../home/home_screen.dart';
 import 'notification_messages.dart';
 
 class NotificationScreen extends StatefulWidget {

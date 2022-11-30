@@ -75,7 +75,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                        width: 55,
                                        child: Center(
                                            child: CircularProgressIndicator(
-                                             color: PrimaryColor,
+                                             color: primaryColor,
                                              strokeWidth: 1.0,
                                            ))
                                    ),
@@ -89,7 +89,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                  width: 30,
                                  height: 30,
                                  child: FloatingActionButton.small(
-                                   backgroundColor: PrimaryColor,
+                                   backgroundColor: primaryColor,
                                    elevation: 3.0,
                                    onPressed: () {},
                                    child: Icon(Icons.camera_alt,

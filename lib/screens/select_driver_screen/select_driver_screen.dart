@@ -142,7 +142,7 @@ class _SelectDriverScreenState extends State<SelectDriverScreen> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-        PrimaryBottomButton.nameofPrimaryButton(context,'HIRE NOW', (){
+        PrimaBottomButton.nameofPrimaryButton(context,'HIRE NOW', (){
           Navigator.push(context, MaterialPageRoute(builder: (context) => TripReviewScreen()));
         }),
 

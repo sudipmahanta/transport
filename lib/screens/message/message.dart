@@ -174,7 +174,7 @@ class _MessageCardState extends State<MessageCard> {
                  width: 260,
                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                  decoration: BoxDecoration(
-                   color: PrimaryColor,
+                   color: primaryColor,
                    borderRadius: BorderRadius.only(
                      topRight: Radius.circular(10),
                      topLeft: Radius.circular(10),

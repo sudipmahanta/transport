@@ -72,7 +72,7 @@ class _SupportScreenState extends State<SupportScreen> {
 
                         Align(
                           alignment: Alignment.topRight,
-                          child: PrimaryButton.nameofPrimaryButton(context, 'Submit', () { }),
+                          child: PrimaButton.nameofPrimaryButton(context, 'Submit', () { }),
                         )
                       ],
                     ),

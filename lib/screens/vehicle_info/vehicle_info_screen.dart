@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transport/constants/utils/utils.dart';
-import '../location/location_screen.dart';
+import '../location/choose_location/choose_location_screen.dart';
 import '../notification/notification_screen.dart';
 
 class VehicleDetailScreen extends StatefulWidget {
@@ -89,14 +89,14 @@ class _VehicleDetailScreenState extends State<VehicleDetailScreen> {
         )
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.only(bottom: 8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BackBottomButton.nameofBackBottomButton(context),
             const SizedBox(width: 5,),
-            PrimaryButton.nameofPrimaryButton(context, 'CONTINUE', (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LocationScreen()));
+            PrimaButton.nameofPrimaryButton(context, 'CONTINUE', (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseLocationScreen()));
             })
           ],
         ),

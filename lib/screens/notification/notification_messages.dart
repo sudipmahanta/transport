@@ -34,7 +34,7 @@ class _NotificationMessageState extends State<NotificationMessage> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(55),
               child: const Image(
-                image: AssetImage('assets/images/home_screen/car_line.png'),
+                image: AssetImage('assets/images/home/car_line.png'),
                 color: Colors.grey,
                 width: 25,
                 height: 25,

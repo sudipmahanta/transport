@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
+import 'package:transport/screens/location/choose_location/address_book/address_book_screen.dart';
 
 import '../../constants/utils/colors_package.dart';
 import '../../constants/utils/utils.dart';
-import '../home_screen/home_screen.dart';
+import '../home/home_screen.dart';
 import 'driver_request_searching_screen.dart';
 
 class DriverRequestScreen extends StatefulWidget {
@@ -67,24 +69,26 @@ class _DriverRequestScreenState extends State<DriverRequestScreen> {
                         // PICK UP
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: LocationInputField.nameofLocationInputField(TextInputType.text, pickupDriverRequestController, 'assets/images/pin_red.png','Pick Up','Enter your pick up location'),
+                          child: LocationInputField.nameofLocationInputField(TextInputType.text, pickupDriverRequestController, Remix.map_pin_3_fill, 'Pick Up', 'Enter your pick up location'),
                         ),
 
                         // WHERE TO ?
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: LocationInputField.nameofLocationInputField(TextInputType.text, whereToDriverRequestController, 'assets/images/pin_black.png','Where To ?','Enter your destination'),
+                          child: LocationInputField.nameofLocationInputField(TextInputType.text, whereToDriverRequestController, Remix.map_pin_3_line, 'Where To ?', 'Enter your destination'),
                         ),
 
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            LocationTextButton.nameofTextButton(context, HomeScreen(), 'Addressbook'),
-                            LocationTextButton.nameofTextButton(context, HomeScreen(), 'Map'),
-                            LocationTextButton.nameofTextButton(context, HomeScreen(), 'Division'),
-                            LocationTextButton.nameofTextButton(context, HomeScreen(), 'Landport'),
-                            LocationTextButton.nameofTextButton(context, HomeScreen(), 'Riverport'),
+                            LocationTextButton.nameofTextButton(context, 'Addressbook', (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => AddressBookScreen()));
+                            }),
+                            LocationTextButton.nameofTextButton(context, 'Map', (){}),
+                            LocationTextButton.nameofTextButton(context, 'Division', (){}),
+                            LocationTextButton.nameofTextButton(context, 'Landport', (){}),
+                            LocationTextButton.nameofTextButton(context, 'Riverport', (){}),
                           ],
                         ),
                         SizedBox(height: 5),
@@ -196,7 +200,7 @@ class _DriverRequestScreenState extends State<DriverRequestScreen> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        elevation: 0, backgroundColor: PrimaryColor,
+                        elevation: 0, backgroundColor: primaryColor,
                         shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(25),

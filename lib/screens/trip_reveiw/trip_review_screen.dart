@@ -503,7 +503,7 @@ class _TripReviewScreenState extends State<TripReviewScreen> {
                                         child: Text(_isVisible ? 'Applied' : 'Apply',
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: _isVisible ? Colors.green : PrimaryColor
+                                            color: _isVisible ? Colors.green : primaryColor
                                           ),
                                         ),
                                       ),
@@ -550,7 +550,7 @@ class _TripReviewScreenState extends State<TripReviewScreen> {
                                         child: Text('Apply',
                                           style: TextStyle(
                                               fontSize: 12,
-                                              color: PrimaryColor
+                                              color: primaryColor
                                           ),
                                         ),
                                       ),
@@ -597,7 +597,7 @@ class _TripReviewScreenState extends State<TripReviewScreen> {
                                         child: Text('Apply',
                                           style: TextStyle(
                                               fontSize: 12,
-                                              color: PrimaryColor
+                                              color: primaryColor
                                           ),
                                         ),
                                       ),
@@ -630,7 +630,7 @@ class _TripReviewScreenState extends State<TripReviewScreen> {
           SizedBox(
             width: deviceWidth,
             height: 55,
-            child: PrimaryBottomButton.nameofPrimaryButton(context,'CONFIRM', (){
+            child: PrimaBottomButton.nameofPrimaryButton(context,'CONFIRM', (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => RunningTripScreen()));
             }
             ),

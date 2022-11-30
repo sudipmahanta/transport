@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 import 'package:transport/constants/utils/utils.dart';
-import 'package:transport/screens/home_screen/home_screen.dart';
+import 'package:transport/screens/home/home_screen.dart';
+import 'package:transport/screens/location/choose_location/address_book/address_book_screen.dart';
+import 'package:transport/screens/location/choose_location/landport/landport_screen.dart';
+import 'package:transport/screens/location/choose_location/riverport/riverport_screen.dart';
 import 'package:transport/screens/location/location_screen_component.dart';
 import 'package:transport/screens/notification/notification_screen.dart';
 
-import '../../constants/utils/colors_package.dart';
+import '../../../constants/utils/colors_package.dart';
+import 'division/division_screen.dart';
 
-class LocationScreen extends StatefulWidget {
-  const LocationScreen({Key? key}) : super(key: key);
+class ChooseLocationScreen extends StatefulWidget {
+  const ChooseLocationScreen({Key? key}) : super(key: key);
 
   @override
-  State<LocationScreen> createState() => _LocationScreenState();
+  State<ChooseLocationScreen> createState() => _ChooseLocationScreenState();
 }
 
 enum SingingCharacter { yes, no }
 
-class _LocationScreenState extends State<LocationScreen> {
+class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
 
   final TextEditingController pickupController= TextEditingController();
   final TextEditingController whereToController= TextEditingController();
@@ -62,12 +67,14 @@ class _LocationScreenState extends State<LocationScreen> {
                             width: 40,
                             height: 40,
                             padding: const EdgeInsets.all(12),
+                            alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.grey.shade200
                             ),
-                            child: const Image(
-                                image: AssetImage('assets/images/notification_fill.png'))
+                            child: Icon(Remix.notification_4_fill,
+                              size: 18,
+                            )
                         ),
                       ),
                     ],
@@ -81,13 +88,13 @@ class _LocationScreenState extends State<LocationScreen> {
                       // PICK UP
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: LocationInputField.nameofLocationInputField(TextInputType.text, pickupController, 'assets/images/pin_red.png','Pick Up','Enter your pick up location'),
+                        child: LocationInputField.nameofLocationInputField(TextInputType.text, pickupController, Remix.map_pin_3_fill,'Pick Up','Enter your pick up location'),
                       ),
 
                       // WHERE TO ?
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: LocationInputField.nameofLocationInputField(TextInputType.text, whereToController, 'assets/images/pin_black.png','Where To ?','Enter your destination'),
+                        child: LocationInputField.nameofLocationInputField(TextInputType.text, whereToController, Remix.map_pin_3_line,'Where To ?','Enter your destination'),
                       ),
 
                       // GOODS TYPE?
@@ -102,11 +109,19 @@ class _LocationScreenState extends State<LocationScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          LocationTextButton.nameofTextButton(context, HomeScreen(), 'Addressbook'),
-                          LocationTextButton.nameofTextButton(context, HomeScreen(), 'Map'),
-                          LocationTextButton.nameofTextButton(context, HomeScreen(), 'Division'),
-                          LocationTextButton.nameofTextButton(context, HomeScreen(), 'Landport'),
-                          LocationTextButton.nameofTextButton(context, HomeScreen(), 'Riverport'),
+                          LocationTextButton.nameofTextButton(context, 'Addressbook', (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => AddressBookScreen()));
+                          }),
+                          LocationTextButton.nameofTextButton(context, 'Map', (){}),
+                          LocationTextButton.nameofTextButton(context, 'Division', (){
+                            showDialog(context: context, builder: (context) => DivisionScreen());
+                          }),
+                          LocationTextButton.nameofTextButton(context, 'Landport', (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => LandPortScreen()));
+                          }),
+                          LocationTextButton.nameofTextButton(context, 'Riverport', (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => RiverPortScreen()));
+                          }),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -158,7 +173,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 Transform.scale(
                                   scale: 0.8,
                                   child: Radio(
-                                    activeColor: MaterialStateColor.resolveWith((states) => PrimaryColor),
+                                    activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
                                       value: "yes",
                                       groupValue: 'no',
                                       onChanged: (index) {}),
@@ -175,7 +190,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 Transform.scale(
                                   scale: 0.8,
                                   child: Radio(
-                                      activeColor: MaterialStateColor.resolveWith((states) => PrimaryColor),
+                                      activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
                                       value: 'no',
                                       groupValue: 'yes',
                                       onChanged: (index) {}
@@ -220,7 +235,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 Transform.scale(
                                   scale: 0.8,
                                   child: Radio(
-                                      activeColor: MaterialStateColor.resolveWith((states) => PrimaryColor),
+                                      activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
                                       value: 'no',
                                       groupValue: 'yes',
                                       onChanged: (index) {}
@@ -238,7 +253,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 Transform.scale(
                                   scale: 0.8,
                                   child: Radio(
-                                      activeColor: MaterialStateColor.resolveWith((states) => PrimaryColor),
+                                      activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
                                       value: 'no',
                                       groupValue: 'yes',
                                       onChanged: (index) {}
@@ -265,12 +280,12 @@ class _LocationScreenState extends State<LocationScreen> {
           children: [
             BackBottomButton.nameofBackBottomButton(context),
             const SizedBox(width: 5,),
-            PrimaryButton.nameofPrimaryButton(context,  'BOOK A RIDE', () {
+            PrimaButton.nameofPrimaryButton(context,  'BOOK A RIDE', () {
               showDialog(
                   context: context,
                   builder: (BuildContext context) =>
                       SingleChildScrollView(
-                        child: OpenDialog(),
+                        child: DivisionScreen(),
                       )
               );
             })

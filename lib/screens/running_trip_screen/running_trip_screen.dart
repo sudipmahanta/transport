@@ -73,7 +73,7 @@ class _RunningTripScreenState extends State<RunningTripScreen> {
                                   children: [
                                     ConstrainedBox(
                                       constraints: BoxConstraints.tightFor(width: deviceWidth , height: deviceHeight * 0.055),
-                                      child: PrimaryButton.nameofPrimaryButton(context, 'Connect Customer Care', (){}),
+                                      child: PrimaButton.nameofPrimaryButton(context, 'Connect Customer Care', (){}),
                                     ),
                                     SizedBox(height: 5),
                                     ConstrainedBox(
@@ -88,7 +88,7 @@ class _RunningTripScreenState extends State<RunningTripScreen> {
                             },
                             child: Text('Cancel',
                               style: TextStyle(
-                                color: PrimaryColor,
+                                color: primaryColor,
                               ),
                             )
                         )

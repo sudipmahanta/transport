@@ -140,7 +140,7 @@ class _DriverRequestSearchingScreenState extends State<DriverRequestSearchingScr
                           ),
                           SizedBox(width: 2,),
                           Radio(
-                              activeColor: PrimaryColor,
+                              activeColor: primaryColor,
                               toggleable: true,
                               value: 0,
                               groupValue: 0,
@@ -233,7 +233,7 @@ class _DriverRequestSearchingScreenState extends State<DriverRequestSearchingScr
                         ),
                         SizedBox(width: 2,),
                         Radio(
-                            activeColor: PrimaryColor,
+                            activeColor: primaryColor,
                             toggleable: true,
                             value: 0,
                             groupValue: 1,
@@ -326,7 +326,7 @@ class _DriverRequestSearchingScreenState extends State<DriverRequestSearchingScr
                         SizedBox(width: 2,),
                         Radio(
                           splashRadius: 8,
-                            activeColor: PrimaryColor,
+                            activeColor: primaryColor,
                             toggleable: true,
                             value: 0,
                             groupValue: 1,

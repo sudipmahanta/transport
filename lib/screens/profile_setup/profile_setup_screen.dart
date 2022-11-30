@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:transport/constants/utils/buttons.dart';
 import 'package:transport/constants/utils/utils.dart';
-import 'package:transport/screens/home_screen/home_screen.dart';
+import 'package:transport/screens/home/home_screen.dart';
+import 'package:transport/screens/profile_setup/widget/profile_setup_appbar.dart';
+import 'package:transport/screens/profile_setup/widget/profile_setup_input_field.dart';
 
 import '../../constants/utils/colors_package.dart';
 
@@ -36,63 +39,13 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
         child: ListView(
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
-            // APPBAR
-            Container(
-              margin: const EdgeInsets.fromLTRB(20,5,20,0),
-              height: 120,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Profile Setup',
-                        style: TextStyle(
-                            fontSize: 26
-                        ),
-                      ),
-                      // SizedBox(height: 2),
-                      Text('Please set your profile to get started',
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 13
-                        ),
-                      )
-                    ],
-                  ),
-                 // Expanded(child: Container()),
-                 Image(
-                   fit: BoxFit.fill,
-                   image: AssetImage('assets/images/anygari.png'),
-                   width: 75,
-                   height: 75,
-                 )
-                ],
-              ),
-            ),
+            const ProfileSetupAppBar(),
 
             // UPLOAD IMAGE, PROFILE SETUP FORM,  RADIO BUTTON
             Column(
               children: [
                 // UPLOAD IMAGE
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(69.0),
-                      border: Border.all(
-                          color: Colors.grey.shade300,
-                          width: 0.8
-                      ),
-                    image: const DecorationImage(
-                      alignment: Alignment.center,
-                      scale: 4.5,
-                      image: AssetImage('assets/images/upload.png'),
-                    )
-                  ),
-                ),
+                const ProfileSetupImagePicker(),
                 const SizedBox(height: 10),
 
                 // PROFILE SETUP FORM
@@ -104,57 +57,43 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         InputTextLabel.nameofText('Name'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 20),
-                          child: ProfileSetupInputField.nameofTextField(
-                              TextInputType.text,
-                              nameController,
-                              'Eg: Nakul Kumar',
-                              'Enter your name'
-                          ),
+                        ProfileSetupInputField(
+                          hintText: 'Eg: Nakul Kumar',
+                          controller: nameController,
+                          emptyErrorLabel: 'Enter your Name',
+                          keyboardType: TextInputType.name,
                         ),
 
                         InputTextLabel.nameofText('Mobile Number'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 20),
-                          child: ProfileSetupInputField.nameofTextField(
-                              TextInputType.phone,
-                              mobileController,
-                              '+91 333 333 3333',
-                              'Enter your mobile number'
-                          ),
+                        ProfileSetupInputField(
+                          hintText: '+91 333 333 3333',
+                          controller: mobileController,
+                          keyboardType: TextInputType.number,
+                          emptyErrorLabel: 'Enter your Mobile Number',
                         ),
 
                         OptionalInputTextLabel.nameofText('E-mail'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 20),
-                          child: ProfileSetupInputField.nameofTextField(
-                              TextInputType.emailAddress,
-                              emailController,
-                              'Eg: example@email.com',
-                              'Enter your email Address'
-                          ),
+                        ProfileSetupInputField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          hintText: 'Eg: example@email.com',
+                          emptyErrorLabel: 'Enter your email',
                         ),
 
                         OptionalInputTextLabel.nameofText('Address'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 20),
-                          child: DyInputField.nameofDyInputField(
-                              TextInputType.streetAddress,
-                              4,
-                              addressController,
-                              'Enter your Address',
-                              null
-                          ),
+                        ProfileSetupMultiLine(
+                          maxLine: 4,
+                          controller: addressController,
+                          keyboardType: TextInputType.streetAddress,
+                          hintText: 'Enter your Address',
+                          emptyErrorLabel: 'Enter your address',
                         ),
 
                         OptionalInputTextLabel.nameofText('Date of Birth'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 20),
-                          child: DateTextField.nameofTextField(
-                              dobController,
-                              '12-09-2022'
-                          ),
+                        ProfileSetupDateInputField(
+                            hintText: '12-12-2000',
+                            emptyErrorLabel: 'Pick Date',
+                            controller: dobController
                         ),
                       ],
                     ),
@@ -171,7 +110,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                       child: Radio<int>(
                         value: 0,
                         toggleable: true,
-                        activeColor: MaterialStateColor.resolveWith((states) => PrimaryColor),
+                        activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         groupValue: selectedvalue,
                         onChanged: (value){
@@ -194,7 +133,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                               ),
                               TextSpan(text: 'Term & Conditions',
                                 style: TextStyle(
-                                    color: PrimaryColor,
+                                    color: primaryColor,
                                     fontFamily: 'Poppins',
                                     decoration: TextDecoration.underline,
                                     fontSize: 10
@@ -209,7 +148,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                               ),
                               TextSpan(text: 'Privacy Policy',
                                 style: TextStyle(
-                                    color: PrimaryColor,
+                                    color: primaryColor,
                                     fontFamily: 'Poppins',
                                     decoration: TextDecoration.underline,
                                     fontSize: 10
@@ -227,10 +166,12 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
       ),
 
       // SUBMIT BUTTON
-      bottomNavigationBar: PrimaryBottomButton.nameofPrimaryButton(context, 'SUBMIT', (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      }
-      ),
+      bottomNavigationBar: PrimaryBottomButton(
+          label: 'SUBMIT',
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          }
+      )
     );
   }
 }

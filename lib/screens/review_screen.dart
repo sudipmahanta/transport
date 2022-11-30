@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:transport/constants/utils/utils.dart';
-import 'package:transport/screens/home_screen/home_screen.dart';
+import 'package:transport/screens/home/home_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({Key? key}) : super(key: key);
@@ -88,7 +88,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
 
                         ConstrainedBox(
                             constraints: BoxConstraints.tightFor(width: deviceWidth, height: 55),
-                          child: PrimaryBottomButton.nameofPrimaryButton(context, 'Submit', (){}),
+                          child: PrimaBottomButton.nameofPrimaryButton(context, 'Submit', (){}),
                         )
                       ],
                     ),
