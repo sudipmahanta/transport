@@ -218,6 +218,7 @@ class SecoundaryButton {
 
  class DatePickerButton {
    static Container  nameofDatePickerButton(onPressed, dateText) => Container(
+     width: 150,
      decoration: BoxDecoration(
        borderRadius: BorderRadius.circular(25),
          border: Border.all(
@@ -241,6 +242,7 @@ class SecoundaryButton {
 
  class TimePickerButton {
    static Container nameofTimePickerButton(onPress, timeText) => Container(
+     width: 150,
      decoration: BoxDecoration(
        borderRadius: BorderRadius.circular(25),
        border: Border.all(

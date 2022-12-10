@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:transport/constants/utils/buttons.dart';
-import 'package:transport/constants/utils/utils.dart';
 import 'package:transport/screens/verification/sucess_screen.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -14,24 +13,8 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
 
-  // Controllers
-  final TextEditingController firstController= TextEditingController();
-  final TextEditingController secondController= TextEditingController();
-  final TextEditingController thirdController= TextEditingController();
-  final TextEditingController fourthController= TextEditingController();
-  final TextEditingController fifthController= TextEditingController();
-  final TextEditingController sixthController= TextEditingController();
-
-  // Focus Nodes
-  FocusNode secondFocusNode = FocusNode();
-  FocusNode thirdFocusNode = FocusNode();
-  FocusNode fourthFocusNode = FocusNode();
-  FocusNode fifthFocusNode = FocusNode();
-  FocusNode sixthFocusNode = FocusNode();
-
   @override
   Widget build(BuildContext context) {
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height - (MediaQuery.of(context).padding.bottom + MediaQuery.of(context).padding.top);
 
@@ -128,7 +111,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   width: width * 0.65,
                   label: 'VERIFY',
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SuccessScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SuccessScreen()));
                   },
                 ),
                 const Spacer(),

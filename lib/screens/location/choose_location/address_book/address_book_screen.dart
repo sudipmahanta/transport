@@ -15,7 +15,7 @@ class AddressBookScreen extends StatefulWidget {
 class _AddressBookScreenState extends State<AddressBookScreen> {
 
   TextEditingController searchController = TextEditingController();
-  int? selectedvalue = 1;
+  int? selectedValue = 1;
   int? selectTile;
 
   @override
@@ -35,7 +35,7 @@ class _AddressBookScreenState extends State<AddressBookScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SaveAddressScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SaveAddressScreen()));
             },
             icon: const Icon(Remix.add_circle_line,
               color: Colors.grey,
@@ -84,7 +84,12 @@ class _AddressBookScreenState extends State<AddressBookScreen> {
                     Column(
                       children: [
                         ListTile(
-                          selectedColor:  selectTile == index ?  Colors.blue : null,
+                          onTap: () {
+                            setState(() {
+                              selectTile = index;
+                            });
+                           debugPrint(index.toString());
+                          },
                           tileColor: const Color(0xFFF8F8F8),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -100,25 +105,19 @@ class _AddressBookScreenState extends State<AddressBookScreen> {
                             ),
                           ),
                           trailing: Radio<int>(
-                            value: 0,
+                            value: selectTile == index ? 0 : 1,
                             toggleable: true,
-                            activeColor: MaterialStateColor.resolveWith((states) => primaryColor),
+                            activeColor: MaterialStateColor.resolveWith((states) => Colors.blue),
+                            fillColor: MaterialStateColor.resolveWith((states) => primaryColor),
                             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            groupValue: selectedvalue,
+                            groupValue: selectTile == index ? 0 : selectedValue,
                             onChanged: (value){
                               setState(() {
-                                selectedvalue = value;
-                                print(value);
+                                selectTile == index ? selectedValue = value : 0;
+                                debugPrint(selectedValue.toString());
                               });
                             },
                           ),
-
-                          onTap: () {
-                            setState(() {
-                              selectTile = index;
-                              print(selectTile);
-                            });
-                          },
                         ),
                         const SizedBox(height: 5),
                       ],
