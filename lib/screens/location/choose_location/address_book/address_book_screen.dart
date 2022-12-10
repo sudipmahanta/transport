@@ -105,12 +105,12 @@ class _AddressBookScreenState extends State<AddressBookScreen> {
                             ),
                           ),
                           trailing: Radio<int>(
-                            value: selectTile == index ? 0 : 1,
+                            value: selectTile == index ? 1 : 0,
                             toggleable: true,
                             activeColor: MaterialStateColor.resolveWith((states) => Colors.blue),
                             fillColor: MaterialStateColor.resolveWith((states) => primaryColor),
                             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            groupValue: selectTile == index ? 0 : selectedValue,
+                            groupValue: selectTile == index ? 1 : selectedValue,
                             onChanged: (value){
                               setState(() {
                                 selectTile == index ? selectedValue = value : 0;
