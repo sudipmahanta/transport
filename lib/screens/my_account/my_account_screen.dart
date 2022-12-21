@@ -5,6 +5,7 @@ import 'package:transport/screens/about_us_screen.dart';
 import 'package:transport/screens/driver_request/driver_request_screen.dart';
 import 'package:transport/screens/my_account/my_account_component.dart';
 import 'package:transport/screens/my_reward/my_reward_screen.dart';
+import 'package:transport/screens/rating/rating_screen.dart';
 import 'package:transport/screens/support_screen.dart';
 import 'package:transport/screens/trip_info/my_ride_screen.dart';
 
@@ -70,7 +71,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                  borderRadius: BorderRadius.circular(15),
                                  child: CachedNetworkImage(
                                    imageUrl: url,
-                                   placeholder: (context, url)=> Container(
+                                   placeholder: (context, url)=> const SizedBox(
                                        height: 55,
                                        width: 55,
                                        child: Center(
@@ -85,14 +86,14 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                              Positioned(
                               top: 90,
                                left: 90.0,
-                               child: Container(
+                               child: SizedBox(
                                  width: 30,
                                  height: 30,
                                  child: FloatingActionButton.small(
                                    backgroundColor: primaryColor,
                                    elevation: 3.0,
                                    onPressed: () {},
-                                   child: Icon(Icons.camera_alt,
+                                   child: const Icon(Icons.camera_alt,
                                      color: SecoundaryTextColor,
                                      size: 15,
                                    ),
@@ -101,12 +102,12 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                              ),
                            ]
                          ),
-                         Text('Kisa Mishra',
+                         const Text('Kisa Mishra',
                            style: TextStyle(
                              fontSize: 32,
                            ),
                          ),
-                         Text('+91-333 333 4444',
+                         const Text('+91-333 333 4444',
                            style: TextStyle(
                              fontWeight: FontWeight.w500,
                              color: Colors.grey
@@ -123,43 +124,45 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                SizedBox(
                  child: ListView(
                    shrinkWrap: true,
-                   physics: NeverScrollableScrollPhysics(),
+                   physics: const NeverScrollableScrollPhysics(),
                    children: [
                      AccountAttribute.nameofAccountAttribute('Trip Info', (){
                        Navigator.push(context, MaterialPageRoute(builder: (context) => MyRideScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
 
                      AccountAttribute.nameofAccountAttribute('Driver Request', (){
                        Navigator.push(context, MaterialPageRoute(builder: (context) => DriverRequestScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
 
                      AccountAttribute.nameofAccountAttribute('My Reward', (){
                        Navigator.push(context, MaterialPageRoute(builder: (context) => MyRewardScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
                      
                      AccountAttribute.nameofAccountAttribute('Message', () { }),
-                     Divider(),
+                     const Divider(),
                      
                      AccountAttribute.nameofAccountAttribute('Payment', () {
                        Navigator.push(context, MaterialPageRoute(builder: (context) => AnotherPaymentScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
                      
                      AccountAttribute.nameofAccountAttribute('Support & Help', () {
                        Navigator.push(context, MaterialPageRoute(builder: (context) => SupportScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
 
-                     AccountAttribute.nameofAccountAttribute('Rating', () { }),
-                     Divider(),
+                     AccountAttribute.nameofAccountAttribute('Rating', () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => RatingScreen()));
+                     }),
+                     const Divider(),
 
                      AccountAttribute.nameofAccountAttribute('About Us', () {
                        Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsScreen()));
                      }),
-                     Divider(),
+                     const Divider(),
                    ],
                  ),
                )

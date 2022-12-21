@@ -43,7 +43,7 @@ class _MyRewardScreenState extends State<MyRewardScreen> {
                 Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Positioned(
+                      const Positioned(
                         child: Image(
                           image: AssetImage('assets/images/referral.png'),
                           height: 300,
